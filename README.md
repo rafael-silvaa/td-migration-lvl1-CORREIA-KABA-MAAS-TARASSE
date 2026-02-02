@@ -26,8 +26,10 @@ TEST:
 
 **MySQL Source**
 
+
 **PostgreSQL Cible**
   #preuve de migration réussie
+  ![image](https://github.com/user-attachments/assets/71d9cb06-573b-44d5-b066-62531505cf89)
   
 **Flyway Log**
   #capture d'écran de la console pour voir le succès du "migrate" 
