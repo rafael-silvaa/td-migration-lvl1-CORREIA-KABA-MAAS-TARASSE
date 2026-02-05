@@ -6,9 +6,9 @@ from datetime import datetime, timedelta
 fake = Faker()
 
 conn = mysql.connector.connect(
-    host='ton_host',
-    user='ton_user',
-    password='ton_password',
+    host='localhost',
+    user='root',
+    password='040116',
     database='ReservationVoyage'
 )
 
@@ -34,9 +34,9 @@ conn.commit()
 
 nbreservations = 1000
 
-for _ in range(nb_reservations):
+for _ in range(nbreservations):
     # choisir un utilisateur au hasard parmi ceux créés
-    id_utilisateur = random.choice(user_ids)
+    id_utilisateur = random.choice(userids)
 
     # exemple de champs pour la table Reservations
     # adapte les noms de colonnes à ton schéma exact
