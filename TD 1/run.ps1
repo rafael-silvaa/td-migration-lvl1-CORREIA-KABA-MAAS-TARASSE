@@ -14,14 +14,9 @@ if (-not (Test-Path $v4)) {
     Set-Content -Path $v4 -Value "SELECT COUNT(*) as TOTAL_USERS FROM utilisateurs;"
 }
 
-# 2. Lancement de la Migration Flyway
-Write-Host "--- 1/2 Migration Flyway ---" -ForegroundColor Cyan
-# On utilise ${PWD} pour le chemin actuel et des guillemets pour gérer les espaces
-docker run --rm --network host `
-  -v "${PWD}/flyway/sql:/flyway/sql" `
-  -v "${PWD}/flyway/conf:/flyway/conf" `
-  flyway/flyway `
-  -configFiles=/flyway/conf/flyway.conf migrate
+# 2. Vérifier que les conteneurs tournent
+Write-Host "--- 1/2 Vérification conteneurs ---" -ForegroundColor Cyan
+docker ps --filter "name=postgres-reservation" --format "{{.Names}}: {{.Status}}"
 
 # 3. Lancement des Tests
 Write-Host "--- 2/2 Exécution des tests ---" -ForegroundColor Cyan
