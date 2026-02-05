@@ -71,3 +71,11 @@ id | nom     | prenom | email                      | mot_de_passe
 3. **Flyway** V2 → insère les 4 utilisateurs dans PostgreSQL
 
 **Migration réussie quand les deux BDD sont identiques** 
+
+
+ETAPE 3
+
+Lancer le script de test
+
+cd "TD 1"
+.\run.ps1
