@@ -7,7 +7,7 @@ fake = Faker()
 config = {
     'host': 'localhost',
     'user': 'root',
-    'password': '040116',
+    'password': 'root',
     'database': 'ReservationVoyage'
 }
 
