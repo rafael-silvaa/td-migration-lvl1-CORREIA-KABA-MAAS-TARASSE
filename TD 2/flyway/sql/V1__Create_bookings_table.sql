@@ -1,0 +1,9 @@
+CREATE TABLE bookings (
+  id BIGSERIAL PRIMARY KEY,
+  customer_email VARCHAR(255) NOT NULL,
+  destination VARCHAR(255) NOT NULL,
+  departure_date DATE NOT NULL,
+  return_date DATE NOT NULL,
+  status VARCHAR(50) NOT NULL,
+  updated_at TIMESTAMP WITH TIME ZONE NOT NULL DEFAULT CURRENT_TIMESTAMP
+);
