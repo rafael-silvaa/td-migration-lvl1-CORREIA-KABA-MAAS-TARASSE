@@ -4,4 +4,4 @@
 **/mysql-data/
 .idea/
 .vscode/
-*.sql
+dump-*.sql
