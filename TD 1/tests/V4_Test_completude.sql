@@ -1,0 +1,1 @@
+SELECT COUNT(*) AS nb_utilisateurs_pg FROM utilisateurs;
