@@ -18,6 +18,16 @@ if (-not (Test-Path $v4)) {
 Write-Host "--- 1/2 Vérification conteneurs ---" -ForegroundColor Cyan
 docker ps --filter "name=postgres-reservation" --format "{{.Names}}: {{.Status}}"
 
+# Attendre que la base reservation_voyage soit disponible
+Write-Host "Attente PostgreSQL..." -ForegroundColor Cyan
+for ($i = 0; $i -lt 15; $i++) {
+    docker exec -i postgres-reservation psql -U postgres -d reservation_voyage -c "SELECT 1" *> $null
+    if ($LASTEXITCODE -eq 0) {
+        break
+    }
+    Start-Sleep -Seconds 2
+}
+
 # 3. Lancement des Tests
 Write-Host "--- 2/2 Exécution des tests ---" -ForegroundColor Cyan
 $files = Get-ChildItem "tests\*.sql"
