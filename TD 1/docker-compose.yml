@@ -1,0 +1,43 @@
+version: "3.8"
+
+services:
+  mysql:
+    image: mysql:8
+    container_name: mysql-reservation
+    environment:
+      MYSQL_ROOT_PASSWORD: root
+      MYSQL_DATABASE: ReservationVoyage
+      MYSQL_USER: app
+      MYSQL_PASSWORD: app
+    ports:
+      - "3306:3306"
+    volumes:
+      - ./mysql-data:/var/lib/mysql
+      - ./mysql/init:/docker-entrypoint-initdb.d
+
+  postgres:
+    image: postgres:16
+    container_name: postgres-reservation
+    environment:
+      POSTGRES_USER: postgres
+      POSTGRES_PASSWORD: postgres
+      POSTGRES_DB: reservation_voyage
+    ports:
+      - "5432:5432"
+    volumes:
+      - ./pg-data:/var/lib/postgresql/data
+
+  flyway:
+    image: flyway/flyway:10
+    container_name: flyway-migration
+    depends_on:
+      - postgres
+    command: >
+      -url=jdbc:postgresql://postgres:5432/reservation_voyage
+      -user=postgres
+      -password=postgres
+      -connectRetries=60
+      migrate
+    volumes:
+      - ./flyway/sql:/flyway/sql
+      - ./flyway/conf:/flyway/conf
