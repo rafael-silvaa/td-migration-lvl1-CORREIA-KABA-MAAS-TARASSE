@@ -25,11 +25,14 @@ TEST:
   - Vérification du nombre total d'enregistrements 
 
 **MySQL Source**
+<img width="1104" height="695" alt="image" src="https://github.com/user-attachments/assets/86192f5a-6f5f-41b5-b1d8-65b55efc273a" />
 
 
 **PostgreSQL Cible**
   #preuve de migration réussie
   ![image](https://github.com/user-attachments/assets/71d9cb06-573b-44d5-b066-62531505cf89)
   
+  
 **Flyway Log**
   #capture d'écran de la console pour voir le succès du "migrate" 
+  <img width="1544" height="297" alt="image" src="https://github.com/user-attachments/assets/9783ed3d-50ff-4eaf-be76-38a7fdd60b23" />
